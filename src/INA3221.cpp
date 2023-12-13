@@ -398,7 +398,7 @@ void INA3221::setCurrentSumDisable(ina3221_ch_t channel) {
 int32_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
     int32_t res;
     ina3221_reg_t reg;
-    int16_t val_raw = 0;
+    uint16_t val_raw = 0;
 
     switch (channel) {
         case INA3221_CH1:
