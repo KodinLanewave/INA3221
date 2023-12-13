@@ -416,7 +416,7 @@ int16_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
 
     // instead of bit-shifting, (which would break the signed integer signing,) divide by 8 to remove the (reserved) last 3 least-significant bits
     // 1 LSB = 40uV
-    res = (int16_t)(val_raw) / 8 * 40;
+    res = ((int16_t)(val_raw) / 8) * 40;
 
     return res;
 }
