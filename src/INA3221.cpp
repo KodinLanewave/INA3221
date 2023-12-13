@@ -472,26 +472,26 @@ int32_t INA3221::estimateOffsetVoltage(ina3221_ch_t channel, uint32_t busV) {
 
 float INA3221::getCurrent(ina3221_ch_t channel) {
     int32_t shunt_uV = 0;
-    float current_A  = 0;
+    float current_mA  = 0;
 
     shunt_uV  = getShuntVoltage(channel);
-    current_A = shunt_uV / 1000.0 / (int32_t)_shuntRes[channel];
-    return current_A;
+    current_mA = shunt_uV / 1000.0 / (int32_t)_shuntRes[channel];
+    return current_mA;
 }
 
 float INA3221::getCurrentCompensated(ina3221_ch_t channel) {
     int32_t shunt_uV  = 0;
     int32_t bus_V     = 0;
-    float current_A   = 0.0;
+    float current_mA   = 0.0;
     int32_t offset_uV = 0;
 
     shunt_uV  = getShuntVoltage(channel);
     bus_V     = getVoltage(channel);
     offset_uV = estimateOffsetVoltage(channel, bus_V);
 
-    current_A = (shunt_uV - offset_uV) / (int32_t)_shuntRes[channel] / 1000.0;
+    current_mA = (shunt_uV - offset_uV) / (int32_t)_shuntRes[channel] / 1000.0;
 
-    return current_A;
+    return current_mA;
 }
 
 float INA3221::getVoltage(ina3221_ch_t channel) {
