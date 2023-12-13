@@ -416,7 +416,7 @@ int32_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
 
     // instead of bit-shifting, (which would break the signed integer signing,) divide by 8 to remove the (reserved) last 3 least-significant bits
     // 1 LSB = 40uV
-    res = (int16_t)(val_raw) / 8 * 40;
+    res = ((int16_t)(val_raw) / 8) * 40;
 
     return res;
 }
@@ -475,7 +475,7 @@ float INA3221::getCurrent(ina3221_ch_t channel) {
     float current_mA  = 0;
 
     shunt_uV  = getShuntVoltage(channel);
-    current_mA = shunt_uV / 1000.0 / (int32_t)_shuntRes[channel];
+    current_mA = shunt_uV / (int32_t)_shuntRes[channel];
     return current_mA;
 }
 
