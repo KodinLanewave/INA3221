@@ -62,15 +62,15 @@ void INA3221::begin(TwoWire *theWire) {
     _i2c->begin();
 }
 
-void INA3221::setShuntRes(uint16_t res_ch1, uint16_t res_ch2,
-                          uint16_t res_ch3) {
+void INA3221::setShuntRes(float res_ch1, float res_ch2,
+                          float res_ch3) {
     _shuntRes[0] = res_ch1;
     _shuntRes[1] = res_ch2;
     _shuntRes[2] = res_ch3;
 }
 
-void INA3221::setFilterRes(uint16_t res_ch1, uint16_t res_ch2,
-                           uint16_t res_ch3) {
+void INA3221::setFilterRes(float res_ch1, float res_ch2,
+                           float res_ch3) {
     _filterRes[0] = res_ch1;
     _filterRes[1] = res_ch2;
     _filterRes[2] = res_ch3;
@@ -396,7 +396,7 @@ void INA3221::setCurrentSumDisable(ina3221_ch_t channel) {
 }
 
 int16_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
-    int16_t res;
+    float res;
     ina3221_reg_t reg;
     uint16_t val_raw = 0;
 
@@ -472,7 +472,7 @@ int16_t INA3221::estimateOffsetVoltage(ina3221_ch_t channel, uint16_t busV) {
 
 float INA3221::getCurrent(ina3221_ch_t channel) {
     int16_t shunt_uV = 0;
-    float current_mA  = 0;
+    float current_mA  = 0.0;
 
     shunt_uV  = getShuntVoltage(channel);
     current_mA = shunt_uV / _shuntRes[channel];
