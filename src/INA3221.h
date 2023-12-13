@@ -157,10 +157,10 @@ class INA3221 {
     void begin(TwoWire *theWire = &Wire);
 
     // Sets shunt resistor value in mOhm
-    void setShuntRes(uint16_t res_ch1, uint16_t res_ch2, uint16_t res_ch3);
+    void setShuntRes(float res_ch1, float res_ch2, float res_ch3);
 
     // Sets filter resistors value in Ohm
-    void setFilterRes(uint16_t res_ch1, uint16_t res_ch2, uint16_t res_ch3);
+    void setFilterRes(float res_ch1, float res_ch2, float res_ch3);
 
     // Sets I2C address of INA3221
     void setAddr(ina3221_addr_t addr) {
