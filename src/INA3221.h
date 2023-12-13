@@ -137,10 +137,10 @@ class INA3221 {
     ina3221_addr_t _i2c_addr;
 
     // Shunt resistance in mOhm
-    uint16_t _shuntRes[INA3221_CH_NUM];
+    float _shuntRes[INA3221_CH_NUM];
 
     // Series filter resistance in Ohm
-    uint16_t _filterRes[INA3221_CH_NUM];
+    float _filterRes[INA3221_CH_NUM];
 
     // Value of Mask/Enable register.
     masken_reg_t _masken_reg;
