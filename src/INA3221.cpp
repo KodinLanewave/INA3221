@@ -475,7 +475,7 @@ float INA3221::getCurrent(ina3221_ch_t channel) {
     float current_mA  = 0;
 
     shunt_uV  = getShuntVoltage(channel);
-    current_mA = shunt_uV / (int16_t)_shuntRes[channel];
+    current_mA = shunt_uV / _shuntRes[channel];
     return current_mA;
 }
 
@@ -489,7 +489,7 @@ float INA3221::getCurrentCompensated(ina3221_ch_t channel) {
     bus_V     = getVoltage(channel);
     offset_uV = estimateOffsetVoltage(channel, bus_V);
 
-    current_mA = (shunt_uV - offset_uV) / (int16_t)_shuntRes[channel];
+    current_mA = (shunt_uV - offset_uV) / _shuntRes[channel];
 
     return current_mA;
 }
