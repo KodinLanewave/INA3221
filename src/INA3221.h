@@ -287,7 +287,7 @@ class INA3221 {
     void setCurrentSumDisable(ina3221_ch_t channel);
 
     // Gets shunt voltage in uV.
-    float getShuntVoltage(ina3221_ch_t channel);
+    int16_t getShuntVoltage(ina3221_ch_t channel);
 
     // Gets warning alert flag.
     bool getWarnAlertFlag(ina3221_ch_t channel);
