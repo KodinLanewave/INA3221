@@ -475,7 +475,7 @@ float INA3221::getCurrent(ina3221_ch_t channel) {
     float current_mA  = 0;
 
     shunt_uV  = getShuntVoltage(channel);
-    current_A = shunt_uV / (int16_t)_shuntRes[channel];
+    current_mA = shunt_uV / (int16_t)_shuntRes[channel];
     return current_mA;
 }
 
