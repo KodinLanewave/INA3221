@@ -30,16 +30,16 @@ void setup() {
 void loop() {
     Serial.printf(
         "A1%3.0fma %1.1fV A2%3.0fma %1.1fV\r\n",
-        ina_0.getCurrent(INA3221_CH1) * 1000, ina_0.getVoltage(INA3221_CH1),
-        ina_0.getCurrent(INA3221_CH2) * 1000, ina_0.getVoltage(INA3221_CH2));
+        ina_0.getCurrent(INA3221_CH1), ina_0.getVoltage(INA3221_CH1),
+        ina_0.getCurrent(INA3221_CH2), ina_0.getVoltage(INA3221_CH2));
     Serial.printf(
         "B1%3.0fma %1.1fV B2%3.0fma %1.1fV\r\n",
-        ina_0.getCurrent(INA3221_CH3) * 1000, ina_0.getVoltage(INA3221_CH3),
-        ina_1.getCurrent(INA3221_CH1) * 1000, ina_1.getVoltage(INA3221_CH1));
+        ina_0.getCurrent(INA3221_CH3), ina_0.getVoltage(INA3221_CH3),
+        ina_1.getCurrent(INA3221_CH1), ina_1.getVoltage(INA3221_CH1));
     Serial.printf(
         "C1%3.0fma %1.1fV C2%3.0fma %1.1fV\r\n\n",
-        ina_1.getCurrent(INA3221_CH2) * 1000, ina_1.getVoltage(INA3221_CH2),
-        ina_1.getCurrent(INA3221_CH3) * 1000, ina_1.getVoltage(INA3221_CH3));
+        ina_1.getCurrent(INA3221_CH2), ina_1.getVoltage(INA3221_CH2),
+        ina_1.getCurrent(INA3221_CH3), ina_1.getVoltage(INA3221_CH3));
 
     delay(1000);
 }
