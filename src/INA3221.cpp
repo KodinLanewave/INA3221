@@ -395,7 +395,7 @@ void INA3221::setCurrentSumDisable(ina3221_ch_t channel) {
     _masken_reg = masken_reg;
 }
 
-float INA3221::getShuntVoltage(ina3221_ch_t channel) {
+int16_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
     int16_t res;
     ina3221_reg_t reg;
     uint16_t val_raw = 0;
