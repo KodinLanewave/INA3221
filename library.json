@@ -3,14 +3,14 @@
   "description": "Library for INA3221 Chip",
   "keywords": "INA3221 current and voltage sensor",
   "authors": {
-    "name": "Tinyu",
-    "url": "https://github.com/Tinyu-Zhao"
+    "name": "KodinLanewave",
+    "url": "https://github.com/KodinLanewave"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tinyu-Zhao/INA3221.git"
+    "url": "https://github.com/KodinLanewave/INA3221.git"
   },
-  "version": "0.0.1",
+  "version": "1.0.0",
   "frameworks": "arduino",
   "platforms": "espressif32"
 }

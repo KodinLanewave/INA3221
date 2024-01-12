@@ -137,10 +137,10 @@ class INA3221 {
     ina3221_addr_t _i2c_addr;
 
     // Shunt resistance in mOhm
-    uint32_t _shuntRes[INA3221_CH_NUM];
+    float _shuntRes[INA3221_CH_NUM];
 
     // Series filter resistance in Ohm
-    uint32_t _filterRes[INA3221_CH_NUM];
+    float _filterRes[INA3221_CH_NUM];
 
     // Value of Mask/Enable register.
     masken_reg_t _masken_reg;
@@ -157,10 +157,10 @@ class INA3221 {
     void begin(TwoWire *theWire = &Wire);
 
     // Sets shunt resistor value in mOhm
-    void setShuntRes(uint32_t res_ch1, uint32_t res_ch2, uint32_t res_ch3);
+    void setShuntRes(float res_ch1, float res_ch2, float res_ch3);
 
     // Sets filter resistors value in Ohm
-    void setFilterRes(uint32_t res_ch1, uint32_t res_ch2, uint32_t res_ch3);
+    void setFilterRes(float res_ch1, float res_ch2, float res_ch3);
 
     // Sets I2C address of INA3221
     void setAddr(ina3221_addr_t addr) {
@@ -216,12 +216,12 @@ class INA3221 {
     // Sets the value that is compared to the Shunt-Voltage Sum register value
     // following each completed cycle of all selected channels to detect
     // for system overcurrent events.
-    void setShuntSumAlertLimit(int32_t voltagemV);
+    void setShuntSumAlertLimit(int16_t voltagemV);
 
     // Sets the current value that is compared to the sum all currents.
     // This function is a helper for setShuntSumAlertLim(). It onverts current
     // value to shunt voltage value.
-    void setCurrentSumAlertLimit(int32_t currentmA);
+    void setCurrentSumAlertLimit(int16_t currentmA);
 
     // Enables warning alert latch.
     void setWarnAlertLatchEnable();
@@ -269,16 +269,16 @@ class INA3221 {
     void setChannelDisable(ina3221_ch_t channel);
 
     // Sets warning alert shunt voltage limit
-    void setWarnAlertShuntLimit(ina3221_ch_t channel, int32_t voltageuV);
+    void setWarnAlertShuntLimit(ina3221_ch_t channel, int16_t voltageuV);
 
     // Sets critical alert shunt voltage limit
-    void setCritAlertShuntLimit(ina3221_ch_t channel, int32_t voltageuV);
+    void setCritAlertShuntLimit(ina3221_ch_t channel, int16_t voltageuV);
 
     // Sets warning alert current limit
-    void setWarnAlertCurrentLimit(ina3221_ch_t channel, int32_t currentmA);
+    void setWarnAlertCurrentLimit(ina3221_ch_t channel, int16_t currentmA);
 
     // Sets critical alert current limit
-    void setCritAlertCurrentLimit(ina3221_ch_t channel, int32_t currentmA);
+    void setCritAlertCurrentLimit(ina3221_ch_t channel, int16_t currentmA);
 
     // Includes channel to fill Shunt-Voltage Sum register.
     void setCurrentSumEnable(ina3221_ch_t channel);
@@ -287,7 +287,7 @@ class INA3221 {
     void setCurrentSumDisable(ina3221_ch_t channel);
 
     // Gets shunt voltage in uV.
-    int32_t getShuntVoltage(ina3221_ch_t channel);
+    int16_t getShuntVoltage(ina3221_ch_t channel);
 
     // Gets warning alert flag.
     bool getWarnAlertFlag(ina3221_ch_t channel);
@@ -296,9 +296,9 @@ class INA3221 {
     bool getCritAlertFlag(ina3221_ch_t channel);
 
     // Estimates offset voltage added by the series filter resitors
-    int32_t estimateOffsetVoltage(ina3221_ch_t channel, uint32_t busVoltage);
+    int16_t estimateOffsetVoltage(ina3221_ch_t channel, uint16_t busVoltage);
 
-    // Gets current in A.
+    // Gets current in mA.
     float getCurrent(ina3221_ch_t channel);
 
     // Gets current compensated with calculated offset voltage.
