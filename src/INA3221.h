@@ -43,9 +43,10 @@ typedef enum {
 typedef enum {
     INA3221_CH1 = 0,
     INA3221_CH2,
-    INA3221_CH3,
-    INA3221_CH_NUM
+    INA3221_CH3    
 } ina3221_ch_t;
+
+#define INA3221_CH_NUM sizeof(ina3221_ch_t)
 
 // Registers
 typedef enum {
