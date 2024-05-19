@@ -300,7 +300,7 @@ void INA3221::setChannelDisable(ina3221_ch_t channel) {
 }
 
 void INA3221::setWarnAlertShuntLimit(ina3221_ch_t channel, int16_t voltageuV) {
-    ina3221_reg_t reg;
+    ina3221_reg_t reg = INA3221_REG_CONF;
     int16_t val = 0;
 
     switch (channel) {
@@ -320,7 +320,7 @@ void INA3221::setWarnAlertShuntLimit(ina3221_ch_t channel, int16_t voltageuV) {
 }
 
 void INA3221::setCritAlertShuntLimit(ina3221_ch_t channel, int16_t voltageuV) {
-    ina3221_reg_t reg;
+    ina3221_reg_t reg = INA3221_REG_CONF;
     int16_t val = 0;
 
     switch (channel) {
@@ -397,7 +397,7 @@ void INA3221::setCurrentSumDisable(ina3221_ch_t channel) {
 
 int16_t INA3221::getShuntVoltage(ina3221_ch_t channel) {
     int16_t res;
-    ina3221_reg_t reg;
+    ina3221_reg_t reg = INA3221_REG_CONF;
     uint16_t val_raw = 0;
 
     switch (channel) {
@@ -496,7 +496,7 @@ float INA3221::getCurrentCompensated(ina3221_ch_t channel) {
 
 float INA3221::getVoltage(ina3221_ch_t channel) {
     float voltage_V = 0.0;
-    ina3221_reg_t reg;
+    ina3221_reg_t reg = INA3221_REG_CONF;
     uint16_t val_raw = 0;
 
     switch (channel) {
